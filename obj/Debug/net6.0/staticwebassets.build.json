@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Eq/I4D/PSoyC2GCd6q6mthjBwk3yYoZfU7ZHXCpbEOU=",
+  "Source": "NoteApp_WebAPI",
+  "BasePath": "_content/NoteApp_WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
