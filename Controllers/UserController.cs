@@ -31,7 +31,7 @@ public class UserController : ControllerBase
             {
                 if (user.hashedPassword == UserModel.User.CaculateHash(loginData.password))
                 {
-                    string token = CreateToken(user);
+                    var token = new TokenModel.Token(CreateAccessToken(user), "");
                     return Ok(JsonSerializer.Serialize(token));
                 }
             }
@@ -39,14 +39,13 @@ public class UserController : ControllerBase
         // Call Database if NotFound user in cache
         return NotFound(JsonSerializer.Serialize("Fail to Login"));
     }
-    private string CreateToken(UserModel.User user)
+    private string CreateAccessToken(UserModel.User user)
     {
         List<Claim> claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.username)
+            new Claim("username", user.username)
         };
-        // claims.AddLast(new Claim(ClaimTypes.Name, user.username));
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyCreateByHOAIAN"));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppController.secretKey));
         var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
         var token = new JwtSecurityToken(
             claims: claims,

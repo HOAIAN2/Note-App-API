@@ -4,9 +4,8 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 // Init App Data
-AppController.InitUserList();
-// AppController.InitNoteList();
-
+AppController.AppInit(builder.Configuration["ConnectionStrings:DefaultConnection"],
+builder.Configuration["Jwt:SecretKey"]);
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -30,13 +29,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         ValidateAudience = false,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyCreateByHOAIAN"))
-        // ClockSkew = TimeSpan.Zero
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
+        ClockSkew = TimeSpan.Zero
     };
 });
 builder.Services.AddSwaggerGen();
-string connectString = builder.Configuration["ConnectionStrings:DefaultConnection"];
-
 var app = builder.Build();
 
 

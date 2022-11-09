@@ -19,7 +19,7 @@ namespace NoteModel
             this.createDate = createDate;
             this.lastModifyDate = lastModifyDate;
         }
-        public string getInfos()
+        public string GetInfos()
         {
             return JsonSerializer.Serialize(this);
         }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UxjY6bJxX3DXaZiyOu3SKxXgJCJqMAf28aj9LaD5n7jOnR6TcgFIFTp6eARlyjpLja0t4k2YOU7GOdp0oU8i5w==",
+  "dgSpecHash": "PB8x9eH/iXcvIBeoPgI8lxkDAlKGTWhCGer0cSveSWnQp78nyPnApfE5BjBGkm94uqImOuTMmVITFhI/9J2ytA==",
   "success": true,
   "projectFilePath": "F:\\Projects_ZX\\WEB\\CSharp\\NoteApp_WebAPI\\NoteApp_WebAPI.csproj",
   "expectedPackageFiles": [
@@ -42,7 +42,11 @@
     "C:\\Users\\ANZ\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\ANZ\\.nuget\\packages\\system.text.encoding.codepages\\4.4.0\\system.text.encoding.codepages.4.4.0.nupkg.sha512",
     "C:\\Users\\ANZ\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
-    "C:\\Users\\ANZ\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\ANZ\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\ANZ\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.11\\microsoft.netcore.app.ref.6.0.11.nupkg.sha512",
+    "C:\\Users\\ANZ\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.11\\microsoft.windowsdesktop.app.ref.6.0.11.nupkg.sha512",
+    "C:\\Users\\ANZ\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.11\\microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512",
+    "C:\\Users\\ANZ\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.11\\microsoft.netcore.app.host.win-x64.6.0.11.nupkg.sha512"
   ],
   "logs": []
 }

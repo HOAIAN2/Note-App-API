@@ -51,3 +51,8 @@ F:\Projects_ZX\WEB\CSharp\NoteApp_WebAPI\obj\Debug\net6.0\refint\NoteApp_WebAPI.
 F:\Projects_ZX\WEB\CSharp\NoteApp_WebAPI\obj\Debug\net6.0\NoteApp_WebAPI.pdb
 F:\Projects_ZX\WEB\CSharp\NoteApp_WebAPI\obj\Debug\net6.0\NoteApp_WebAPI.genruntimeconfig.cache
 F:\Projects_ZX\WEB\CSharp\NoteApp_WebAPI\obj\Debug\net6.0\ref\NoteApp_WebAPI.dll
+F:\Projects_ZX\WEB\CSharp\NoteApp_WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.NoteApp_WebAPI.Microsoft.AspNetCore.StaticWebAssets.props
+F:\Projects_ZX\WEB\CSharp\NoteApp_WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.NoteApp_WebAPI.props
+F:\Projects_ZX\WEB\CSharp\NoteApp_WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.NoteApp_WebAPI.props
+F:\Projects_ZX\WEB\CSharp\NoteApp_WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.NoteApp_WebAPI.props
+F:\Projects_ZX\WEB\CSharp\NoteApp_WebAPI\obj\Debug\net6.0\staticwebassets.pack.json
