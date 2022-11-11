@@ -1,10 +1,5 @@
-using System.Text;
 using System.Text.Json;
-using System.Security.Claims;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Authorization;
 namespace NodeWebAPI.Controllers;
 
@@ -15,15 +10,13 @@ public class NoteController : ControllerBase
 {
     [Authorize]
     [HttpPost]
-    public IActionResult CreateNote(NoteModel.CreateNote newNode)
+    public IActionResult CreateNote(NoteModel.CreateNote newNote)
     {
         NoteModel.Note? note = null;
         string jwt = Request.Headers.Authorization;
-        string username = AppController.ReadToken(jwt);
-        var user = AppController.FindUser(username);
-        var time = DateTimeOffset.Now.ToUnixTimeSeconds();
-        note = new NoteModel.Note(1, user.id, newNode.title, newNode.content, time, time);
-        AppController.noteList.AddLast(note);
+        int userID = AppController.ReadTokenUserID(jwt);
+        note = AppController.SaveNote(userID, newNote.title, newNote.content);
+        if (note == null) return NotFound(JsonSerializer.Serialize("Error"));
         return Ok(note.GetInfos());
     }
     [Authorize]

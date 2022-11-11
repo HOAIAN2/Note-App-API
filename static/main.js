@@ -8,14 +8,16 @@ const loginData = {
     username,
     password
 }
-const noteData = {
-    title: "123123",
-    content: "1231231"
-}
 const btn = document.querySelector('button')
 const btn1 = document.querySelector('#note')
 const btn2 = document.querySelector('#note1')
 const btn3 = document.querySelector('#note2')
+const title = document.querySelector('#title')
+const content = document.querySelector('#content')
+const noteData = {
+    title,
+    content
+}
 btn.addEventListener('click', () => {
     loginData.username = username.value
     loginData.password = password.value
@@ -46,6 +48,9 @@ btn1.addEventListener('click', () => {
         })
 })
 btn2.addEventListener('click', () => {
+    noteData.title = title.value
+    noteData.content = content.value
+    console.log(noteData)
     fetch('https://localhost:5000/Note', {
         method: 'POST',
         headers: {
@@ -53,9 +58,10 @@ btn2.addEventListener('click', () => {
             'Authorization': `Bearer ${token.accessToken}`
         },
         body: JSON.stringify(noteData)
-    }).then(res => {
-        console.log(res)
-    })
+    }).then(res => res.json())
+        .then(json => {
+            console.log(json)
+        })
 })
 btn3.addEventListener('click', () => {
     fetch('https://localhost:5000/Note', {

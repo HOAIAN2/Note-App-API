@@ -43,6 +43,7 @@ public class UserController : ControllerBase
     {
         List<Claim> claims = new List<Claim>
         {
+            new Claim("id", user.id.ToString()),
             new Claim("username", user.username)
         };
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppController.secretKey));

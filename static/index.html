@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <!-- <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script> -->
     <title>Note app</title>
 </head>
 
@@ -17,11 +15,14 @@
         <label for="password">password: </label> <input id="password" type="password" value=""">
         <button>Login</button>
     </div>
-    <div>
-        <button id="note">Get Info</button>
-        <button id="note1">Post Note</button>
-        <button id="note2">Get Note</button>
-    </div>
-    <script src="./main.js"></script>
+    <input id="title" type="text">
+        <textarea id="content" cols="30" rows="10"></textarea>
+        <div>
+            <button id="note">Get Info</button>
+            <button id="note1">Post Note</button>
+            <button id="note2">Get Note</button>
+        </div>
+        <script src="./main.js"></script>
 </body>
+
 </html>
