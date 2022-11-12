@@ -12,9 +12,9 @@ class AppController
         InitUserList();
         InitNoteList();
     }
-    public static string ReadTokenUsername(string bearerJwt)
+    public static string? ReadTokenUsername(string bearerJwt)
     {
-        string result = "";
+        string? result = null;
         string[] jwt = bearerJwt.Split(' ');
         var handler = new JwtSecurityTokenHandler();
         var jsonToken = handler.ReadToken(jwt[1]);
@@ -31,17 +31,42 @@ class AppController
         var jsonToken = handler.ReadToken(jwt[1]);
         var tokenS = jsonToken as JwtSecurityToken;
         if (tokenS == null) return result;
-        result = int.Parse(tokenS.Payload["id"].ToString());
+        string? s = tokenS.Payload["id"].ToString();
+        if (s == null) return result;
+        else result = int.Parse(s);
         return result;
     }
-    public static UserModel.User? FindUser(string username)
+    private static UserModel.User? FindUser(int id)
     {
         foreach (var user in userList)
         {
-            if (user.username == username) return user;
+            if (user.id == id) return user;
         }
         // Call Database latter
         return null;
+    }
+    public static void HandleIncreaseNoteCount(int userID)
+    {
+        var user = FindUser(userID);
+        if (user == null) return;
+        int count = user.IncreaseNoteCount();
+        string queryString = $"UPDATE user SET note_count = {count} WHERE id = {userID};";
+        MySql.Data.MySqlClient.MySqlConnection conn;
+        MySql.Data.MySqlClient.MySqlCommand command;
+        try
+        {
+            conn = new MySql.Data.MySqlClient.MySqlConnection();
+            conn.ConnectionString = connectString;
+            command = new MySql.Data.MySqlClient.MySqlCommand(queryString, conn);
+            conn.Open();
+            MySql.Data.MySqlClient.MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read()) { }
+            conn.Close();
+        }
+        catch (MySql.Data.MySqlClient.MySqlException ex)
+        {
+            Console.WriteLine(ex);
+        }
     }
     public static void InitUserList()
     {

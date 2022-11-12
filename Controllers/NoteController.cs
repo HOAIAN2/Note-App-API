@@ -16,6 +16,7 @@ public class NoteController : ControllerBase
         string jwt = Request.Headers.Authorization;
         int userID = AppController.ReadTokenUserID(jwt);
         note = AppController.SaveNote(userID, newNote.title, newNote.content);
+        AppController.HandleIncreaseNoteCount(userID);
         if (note == null) return NotFound(JsonSerializer.Serialize("Error"));
         return Ok(note.GetInfos());
     }
@@ -23,6 +24,13 @@ public class NoteController : ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        return Ok(JsonSerializer.Serialize(AppController.noteList));
+        LinkedList<NoteModel.Note> notes = new LinkedList<NoteModel.Note>();
+        string jwt = Request.Headers.Authorization;
+        int userID = AppController.ReadTokenUserID(jwt);
+        foreach (var note in AppController.noteList)
+        {
+            if (note.ownerID == userID) notes.AddLast(note);
+        }
+        return Ok(JsonSerializer.Serialize(notes));
     }
 }

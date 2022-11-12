@@ -35,6 +35,10 @@ namespace UserModel
             this.noteCount = noteCount;
             this.hashedPassword = hashedPassword;
         }
+        public int IncreaseNoteCount()
+        {
+            return ++this.noteCount;
+        }
         public string GetInfos()
         {
             return JsonSerializer.Serialize(this);
