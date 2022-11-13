@@ -15,11 +15,14 @@ public class UserController : ControllerBase
 {
     [Authorize]
     [HttpGet]
-    public IActionResult Get(string username)
+    public IActionResult Get()
     {
-        var user = AppController.userList.First;
-        if (user == null) return BadRequest();
-        return Ok(user.Value.GetInfos());
+        string jwt = Request.Headers.Authorization;
+        int userID = AppController.ReadTokenUserID(jwt);
+        UserModel.User? user = null;
+        user = AppController.FindUser(userID);
+        if (user == null) return BadRequest(JsonSerializer.Serialize("Error"));
+        return Ok(user.GetInfos());
     }
     [EnableCors]
     [HttpPost("Login")]

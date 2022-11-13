@@ -36,7 +36,7 @@ class AppController
         else result = int.Parse(s);
         return result;
     }
-    private static UserModel.User? FindUser(int id)
+    public static UserModel.User? FindUser(int id)
     {
         foreach (var user in userList)
         {
