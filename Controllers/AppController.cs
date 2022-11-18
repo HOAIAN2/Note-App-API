@@ -134,7 +134,7 @@ class AppController
         NoteModel.Note? note = null;
         var time = DateTimeOffset.Now.ToUnixTimeMilliseconds();
         string queryString = $"INSERT INTO note(owner_id, title, content, create_date, last_modified) VALUE({userID}, '{title}', '{content}', {time}, {time})";
-        string queryString1 = "SELECT * FROM note ORDER BY id DESC LIMIT 1;";
+        string queryString1 = "SELECT * FROM note WHERE note.owner_id ORDER BY id DESC LIMIT 1;";
         MySql.Data.MySqlClient.MySqlConnection conn;
         MySql.Data.MySqlClient.MySqlCommand command;
         MySql.Data.MySqlClient.MySqlCommand command1;
